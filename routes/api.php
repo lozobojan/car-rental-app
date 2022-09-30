@@ -1,5 +1,9 @@
 <?php
 
+Route::group(['middleware' =>  ['auth:sanctum']], function(){
+    Route::post('/me', \App\Http\Controllers\Api\Auth\CurrentUserController::class);
+});
+
 Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', 'middleware' => ['auth:sanctum']], function () {
     // Abilities
     Route::apiResource('abilities', 'AbilitiesController', ['only' => ['index']]);
@@ -38,3 +42,5 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
 });
 
 Route::post('/login', \App\Http\Controllers\Api\Auth\LoginController::class);
+
+
