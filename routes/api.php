@@ -36,3 +36,5 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
     // Location
     Route::resource('locations', 'LocationApiController');
 });
+
+Route::post('/login', \App\Http\Controllers\Api\Auth\LoginController::class);
